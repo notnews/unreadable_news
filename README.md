@@ -21,8 +21,8 @@ While the average NYT article length has increased over time, so has readability
     
     <p align="center"><img width="55%" src="figs/nyt_words_uniquewords.png"></p>
 
-2. Our main measure of readability is based on the [Flesch–Kincaid readability tests
-](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). The Flesch Reading-Ease measure tells us how easy it is to read a text based on the average number of syllables per word and the average number of words per sentence. The higher those numbers are, the lower the ease of reading.
+2. Our main measure of readability is the [Flesch Reading-Ease measure
+](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). This measure is inversely related to the average number of syllables per word and the average number of words per sentence. A higher measure indicates higher ease of reading. A higher measure indicates higher ease of reading.
 
     * Our figure below shows an increase in readability from 1987 till the turn of the millennium by about 10 points. 
 This increase is non-trivial since a 10-point gap in Flesch reading ease can separate US grades.
