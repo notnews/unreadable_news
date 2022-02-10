@@ -1,12 +1,38 @@
+import textstat
+from lexicalrichness import LexicalRichness
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import seaborn as sns
 sns.set_theme(context="notebook", font_scale=1.05, 
               style='whitegrid')
-
 BLUE = '#0077BB'
 PURPLE = '#AA3377'
 
+
+def uniqueterms(text):
+    lex = LexicalRichness(text)
+    return lex.terms
+
+def ttr(text):
+    lex = LexicalRichness(text)
+    if lex.words>1:
+        return lex.ttr
+    else:
+        return None
+
+def mtld(text):
+    lex = LexicalRichness(text)
+    if lex.words>1:
+        return lex.mtld(threshold=0.72)
+    else:
+        return None
+
+def hdd(text):
+    lex = LexicalRichness(text)
+    if lex.words>42:
+        return lex.hdd(draws=42)
+    else:
+        return None
 
 
 def its(row, base, x):
