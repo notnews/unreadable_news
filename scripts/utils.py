@@ -1,5 +1,7 @@
 import textstat
 from lexicalrichness import LexicalRichness
+import statsmodels.api as sm
+from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import seaborn as sns
@@ -49,19 +51,42 @@ def its(row, base, x):
         return -1 * abs_change
 
     
-def plotline(x, y, title=None, yrange=None, color=BLUE, figsize=(12*.7, 8*.7), tickersize=13,
-             markersize=60, labsize=15, titlesize=18, savepath=None):
+def plotline(x, y, title=None, yrange=None, xrange=range(0, 253, 36), xticklabels=None, color=BLUE, figsize=(12*.7, 8*.7), tickersize=13,
+             markersize=80, labsize=15, titlesize=18, bw=0.4, savepath=None):
     
+    # Get custom lowess
+    lowess = sm.nonparametric.lowess(y, x, frac=bw)
+    lowess_x = list(zip(*lowess))[0]
+    lowess_y = list(zip(*lowess))[1]
+    f = interp1d(lowess_x, lowess_y, bounds_error=False)
+    ynew_line = f(x)
+
+    # Init fig
     fig, ax = plt.subplots(figsize=figsize)
 
-    sns.regplot(x=x, y=y, 
-                color=BLUE, 
-                scatter_kws={'s': markersize, 'alpha': .3},
-                line_kws={'linewidth':4, 'color': PURPLE, 'alpha': .9},
-                lowess=True)
+    # sns.regplot(x=x, y=y, 
+    #             color=BLUE, 
+    #             scatter_kws={'s': markersize, 'alpha': .3},
+    #             line_kws={'linewidth':4, 'color': PURPLE, 'alpha': .9},
+    #             lowess=True)
 
-    plt.xticks(range(0, 253, 36))
-    ax.set_xticklabels(range(1987, 2010, 3), fontsize=tickersize)
+    sns.scatterplot(x=x, y=y, 
+      s=markersize,
+                    # scatter_kws={'s': markersize},
+                    legend=False, 
+                    color=color, 
+                    alpha=0.3, 
+                    ax=ax)
+
+    sns.lineplot(x=x, y=ynew_line, 
+                 linewidth=4, 
+                 alpha=.85, color=PURPLE, 
+                 ax=ax)    
+
+    if xrange:
+        plt.xticks(xrange)
+    if xticklabels:
+        ax.set_xticklabels(xticklabels, fontsize=tickersize)
     
     if yrange:
         plt.yticks(yrange, fontsize=tickersize)
@@ -81,8 +106,10 @@ def plotline(x, y, title=None, yrange=None, color=BLUE, figsize=(12*.7, 8*.7), t
         plt.savefig(f'{savepath}.pdf', dpi=None, bbox_inches='tight', pad_inches=0)
         plt.savefig(f'{savepath}.png', dpi=120, bbox_inches='tight', pad_inches=0)
 
+    return ax
 
-def plot_dual_indices(y1,y2,x, title=None, yrange=None, color1=PURPLE, color2='darkslategray',
+
+def plot_dual_indices(y1,y2,x, title=None, yrange=None, xrange=None, color1=PURPLE, color2='darkslategray',
                       label1=None, label2=None, err_style='band', figsize=(12*.7, 8*.7), 
                       linewidth=3, tickersize=13, alpha=.6, labsize=15, titlesize=18, savepath=None):
     
@@ -108,7 +135,8 @@ def plot_dual_indices(y1,y2,x, title=None, yrange=None, color1=PURPLE, color2='d
 
     ax.lines[1].set_linestyle("--")
     
-    plt.xticks(range(1987, 2010, 3))
+    if xrange:
+        plt.xticks(xrange)
     
     if yrange:
         plt.yticks(yrange, fontsize=tickersize)
@@ -129,3 +157,4 @@ def plot_dual_indices(y1,y2,x, title=None, yrange=None, color1=PURPLE, color2='d
         plt.savefig(f'{savepath}.png', dpi=120, bbox_inches='tight', pad_inches=0)    
 
     
+    return ax
