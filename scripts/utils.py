@@ -111,6 +111,7 @@ def plotline(x, y, title=None, yrange=None, xrange=range(0, 253, 36), xticklabel
 
 def plot_dual_indices(y1,y2,x, title=None, yrange=None, xrange=None, color1=PURPLE, color2='darkslategray',
                       label1=None, label2=None, err_style='band', figsize=(12*.7, 8*.7), 
+                      ylabel='Percentage change from 1987',
                       linewidth=3, tickersize=13, alpha=.6, labsize=15, titlesize=18, savepath=None):
     
     fig, ax = plt.subplots(figsize=figsize)
@@ -143,7 +144,7 @@ def plot_dual_indices(y1,y2,x, title=None, yrange=None, xrange=None, color1=PURP
     ax.yaxis.set_major_formatter(mtick.PercentFormatter(decimals=0))
 
     plt.xlabel('Publication year', fontweight='bold', loc='center', size=labsize)
-    plt.ylabel('Percentage change from 1987', fontweight='bold', loc='center', size=18)
+    plt.ylabel(ylabel, fontweight='bold', loc='center', size=18)
     if title:
         plt.title(title, fontweight='bold', loc='left', size=titlesize)
         
