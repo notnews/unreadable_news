@@ -19,32 +19,6 @@ BLUE = '#0077BB'
 PURPLE = '#AA3377'
 
 
-def uniqueterms(text):
-    lex = LexicalRichness(text)
-    return lex.terms
-
-def ttr(text):
-    lex = LexicalRichness(text)
-    if lex.words>1:
-        return lex.ttr
-    else:
-        return None
-
-def mtld(text):
-    lex = LexicalRichness(text)
-    if lex.words>1:
-        return lex.mtld(threshold=0.72)
-    else:
-        return None
-
-def hdd(text):
-    lex = LexicalRichness(text)
-    if lex.words>42:
-        return lex.hdd(draws=42)
-    else:
-        return None
-
-
 def its(row, base, x):
     """ Index time series so that first period is 0 and all subsequent values are percentage 
         changes from baseline/first period.
@@ -79,7 +53,7 @@ def update_rcparams(
     })
 
 
-def coverage_dowmonth(
+def coverage_dayweek(
     dates: List[Union[str, datetime.date, datetime.datetime]],
     data: List[float],    
     figsize: Tuple = (12,5),
@@ -90,7 +64,7 @@ def coverage_dowmonth(
     
     update_rcparams(**kwargs)
     
-    _, ax = plt.subplots(figsize=figsize)
+    fig, ax = plt.subplots(figsize=figsize)
     july.heatmap(dates, data, 
                  title=title, 
                  cmap=cmap, 
@@ -102,7 +76,6 @@ def coverage_dowmonth(
 def coverage_mthyr(
     data: List[Union[pd.DataFrame, np.ndarray]],
     figsize: Tuple = (9,6),
-    figsizescale: float = .95,
     cmap: Union[str, LinearSegmentedColormap, ListedColormap] = 'mako_r',
     linewidths: float = .1,
     ylabel: Optional[str] = None,
@@ -114,8 +87,7 @@ def coverage_mthyr(
     
     update_rcparams(**kwargs)
     
-    figsize = ([x*figsizescale for x in figsize])
-    _, ax = plt.subplots(figsize=figsize)
+    fig, ax = plt.subplots(figsize=figsize)
     sns.heatmap(data, 
                 linewidths=linewidths, 
                 cmap=cmap,
@@ -132,9 +104,8 @@ def coverage_mthyr(
     return ax
 
       
-def plotline(x, y, title=None, yrange=None, xrange=range(0, 253, 36), 
-    xticklabels=range(1987, 2010, 3), color=BLUE, figsize=(12*.7, 8*.7), tickersize=13,
-    markersize=80, labsize=15, titlesize=18, bw=0.4, savepath=None):
+def plotline(x, y, title=None, yrange=None, xrange=range(0, 253, 36), xticklabels=None, color=BLUE, figsize=(12*.7, 8*.7), tickersize=13,
+             markersize=80, labsize=15, titlesize=18, bw=0.4, savepath=None):
     
     # Get custom lowess
     lowess = sm.nonparametric.lowess(y, x, frac=bw)
@@ -144,7 +115,7 @@ def plotline(x, y, title=None, yrange=None, xrange=range(0, 253, 36),
     ynew_line = f(x)
 
     # Init fig
-    _, ax = plt.subplots(figsize=figsize)
+    fig, ax = plt.subplots(figsize=figsize)
 
     # sns.regplot(x=x, y=y, 
     #             color=BLUE, 
@@ -196,7 +167,7 @@ def plot_dual_indices(y1,y2,x, title=None, yrange=None, xrange=None, color1=PURP
                       ylabel='Percentage change from 1987',
                       linewidth=3, tickersize=13, alpha=.6, labsize=15, titlesize=18, savepath=None):
     
-    _, ax = plt.subplots(figsize=figsize)
+    fig, ax = plt.subplots(figsize=figsize)
 
     sns.lineplot(x=x, y=y1, 
                  marker='o',
@@ -241,10 +212,3 @@ def plot_dual_indices(y1,y2,x, title=None, yrange=None, xrange=None, color1=PURP
 
     
     return ax
-
-
-
-def save_mpl_fig(savepath):
-    plt.savefig(f'{savepath}.pdf', dpi=None, bbox_inches='tight', pad_inches=0)
-    plt.savefig(f'{savepath}.png', dpi=120, bbox_inches='tight', pad_inches=0)    
-
