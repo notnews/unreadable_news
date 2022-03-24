@@ -1,24 +1,6 @@
 import re
 import sys
-# import textstat
 from lexicalrichness import LexicalRichness
-# import pandas as pd
-# import numpy as np
-# import datetime
-# import july
-# from typing import Optional, List, Union, Tuple
-# from matplotlib.pyplot import Axes
-# from matplotlib.colors import ListedColormap, LinearSegmentedColormap
-# import matplotlib as mpl
-# import statsmodels.api as sm
-# from scipy.interpolate import interp1d
-# import matplotlib.pyplot as plt
-# import matplotlib.ticker as mtick
-# import seaborn as sns
-# sns.set_theme(context="notebook", font_scale=1.05, 
-#               style='whitegrid')
-# BLUE = '#0077BB'
-# PURPLE = '#AA3377'
 
 
 def clean_transcripts(text):

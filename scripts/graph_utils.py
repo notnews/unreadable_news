@@ -212,3 +212,8 @@ def plot_dual_indices(y1,y2,x, title=None, yrange=None, xrange=None, color1=PURP
 
     
     return ax
+
+
+def save_mpl_fig(savepath):
+    plt.savefig(f'{savepath}.pdf', dpi=None, bbox_inches='tight', pad_inches=0)
+    plt.savefig(f'{savepath}.png', dpi=120, bbox_inches='tight', pad_inches=0)
