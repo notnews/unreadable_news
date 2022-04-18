@@ -86,4 +86,10 @@ MTLD measures lexical richness using the mean length of sequential words in a te
       
     <p align="center"><img width="55%" src="figs/nyt_lexicalrichness_index.png"></p>
 
+NYT in comparison to CNN, NPR, and MSNBC:
 
+<p align="center">
+  <img alt="Light" src="figs/readability_nyt_cnn_npr_msnbc.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Dark" src="figs/lexicalrichness_nyt_cnn_npr_msnbc.png" width="45%">
+</p>
