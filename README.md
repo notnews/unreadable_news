@@ -46,11 +46,11 @@ While the average NYT article length has increased over time, so has readability
       </details>    
     <p align="center"><img width="55%" src="figs/nyt_words_uniquewords.png"></p>
 
-2. Our main measure of readability is the [Flesch Reading-Ease measure](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). This measure is inversely related to the average number of syllables per word and the average number of words per sentence. A higher measure indicates higher ease of reading. A higher measure indicates higher ease of reading.
+2. Our main measure of readability is the [Flesch Reading-Ease measure](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). This measure is inversely related to the average number of syllables per word and the average number of words per sentence. A higher measure indicates higher ease of reading. A higher Flesch measure indicates higher ease of reading.
 
-    * Our figure below shows an increase in readability from 1987 till the turn of the millennium by about 10 points. 
-This increase is non-trivial since a 10-point gap in Flesch reading ease can separate US grades.
-At the end of our sample, the average NYT article has a level of readability that is considered plain English: easily understandable for 13- to 15-year-old students.
+    * Our figure below shows an increase in readability from 1987 till the turn of the millennium by about 4 points. 
+For a sense of scale, a 10-point gap in Flesch reading ease can separate US grades.
+At the end of our sample, the average NYT article has a level of readability that is considered fairly difficult: a level understandable for 10th&ndash;12th grade students.
       <details>
         <summary><em>Figure notes</em></summary>
         <em>Each marker is an average of NYT articles for each month-year. NYT articles with word count in the top and bottom one percentile are dropped. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
