@@ -4,6 +4,20 @@ Has the news become more readable over time? We use the [NYT Corpus](https://git
 
 We use the [Python package textstat](https://pypi.org/project/textstat/) to estimate where each article lies on the Flesch Reading Ease scale, Flesch-Kincaid Grade Level Scale, The Fog Scale, and the SMOG scale, along with the number of words, and such.
 
+### Data coverage
+
+NYT article data is available for 1987&ndash;2007 (21 years):
+
+<p align="center"><img width="60%" src="figs/data_coverage/nyt_monthyear.png"></p>
+
+At a finer resolution, we can see that our data coverage is fattest on Sundays. Below is a plot for two full years of NYT data coverage:
+
+<p align="center"><img width="60%" src="figs/data_coverage/nyt_dowmonth_1987.png"></p>
+
+<p align="center"><img width="60%" src="figs/data_coverage/nyt_dowmonth_2006.png"></p>
+
+Before computing the text statistics (readability & lexical richness), we do some basic text pre-processing. For the plots of readability and lexical richness, we also drop: (i) the 99th percentile in text length and (ii) the 1st percentile in text length or articles with fewer than 100 words, whichever is lower.
+
 
 ### What we find
 1. We use simple methods in computational linguistics to characterize NYT articles.
@@ -12,7 +26,7 @@ While the average NYT article length has increased over time, so has readability
     * Average NYT article length has increased over the years to 550 words in 2007 (an average reading time of 2–3 minutes):
       <details>
         <summary><em>Figure notes</em></summary>
-        <em>Each marker is an average of NYT articles for each month-year. NYT articles with word count in the top and bottom one percentile are dropped. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
+        <em>Each marker is an average of NYT articles for each month-year. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
       </details>
 
     <p align="center"><img width="55%" src="figs/nyt_wordcount.png"></p>
@@ -20,7 +34,7 @@ While the average NYT article length has increased over time, so has readability
     * Average NYT article unique number of words used has also increased over time:
       <details>
         <summary><em>Figure notes</em></summary>
-        <em>Each marker is an average of NYT articles for each month-year. NYT articles with word count in the top and bottom one percentile are dropped. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
+        <em>Each marker is an average of NYT articles for each month-year. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
       </details>
 
     <p align="center"><img width="55%" src="figs/nyt_uniquewords.png"></p>
@@ -28,15 +42,15 @@ While the average NYT article length has increased over time, so has readability
     * Comovement of wordcount and unique wordcount:
       <details>
         <summary><em>Figure notes</em></summary>
-        <em>Each marker is an annual average of NYT articles. NYT articles with word count in the top and bottom one percentile are dropped. Both lines are indexed to 1987—the first year of our sample—so that each subsequent marker indicates annual percentage change since the base year of 1987.</em>
+        <em>Each marker is an annual average of NYT articles. Both lines are indexed to 1987—the first year of our sample—so that each subsequent marker indicates annual percentage change since the base year of 1987.</em>
       </details>    
     <p align="center"><img width="55%" src="figs/nyt_words_uniquewords.png"></p>
 
-2. Our main measure of readability is the [Flesch Reading-Ease measure](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). This measure is inversely related to the average number of syllables per word and the average number of words per sentence. A higher measure indicates higher ease of reading. A higher measure indicates higher ease of reading.
+2. Our main measure of readability is the [Flesch Reading-Ease measure](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests). This measure is inversely related to the average number of syllables per word and the average number of words per sentence. A higher measure indicates higher ease of reading. A higher Flesch measure indicates higher ease of reading.
 
-    * Our figure below shows an increase in readability from 1987 till the turn of the millennium by about 10 points. 
-This increase is non-trivial since a 10-point gap in Flesch reading ease can separate US grades.
-At the end of our sample, the average NYT article has a level of readability that is considered plain English: easily understandable for 13- to 15-year-old students.
+    * Our figure below shows an increase in readability from 1987 till the turn of the millennium by about 4 points. 
+For a sense of scale, a 10-point gap in Flesch reading ease can separate US grades.
+At the end of our sample, the average NYT article has a level of readability that is considered fairly difficult: a level understandable for 10th&ndash;12th grade students.
       <details>
         <summary><em>Figure notes</em></summary>
         <em>Each marker is an average of NYT articles for each month-year. NYT articles with word count in the top and bottom one percentile are dropped. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
@@ -72,4 +86,10 @@ MTLD measures lexical richness using the mean length of sequential words in a te
       
     <p align="center"><img width="55%" src="figs/nyt_lexicalrichness_index.png"></p>
 
+NYT in comparison to CNN, NPR, and MSNBC:
 
+<p align="center">
+  <img alt="Light" src="figs/readability_nyt_cnn_npr_msnbc.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Dark" src="figs/lexicalrichness_nyt_cnn_npr_msnbc.png" width="45%">
+</p>
