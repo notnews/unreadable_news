@@ -1,16 +1,22 @@
 # Readable News: Readability of News Over Time
 
-Has the news become more readable over time? We use the [NYT Corpus](https://github.com/notnews/nytimes-corpus-extractor) and the [Top 10! News Corpus](https://github.com/notnews/top10) to assess how the complexity of news articles has evolved over time. 
+Has the news become more readable over time? We use the [NYT Corpus](https://github.com/notnews/nytimes-corpus-extractor) as our main data source to assess how the complexity of news articles has evolved over time. We supplement this data using (i) [CNN transcripts](https://github.com/notnews/cnn_transcripts), (ii) [NPR transcripts](https://github.com/zcgzcgzcg1/MediaSum/tree/main/data), and (iii) [MSNBC transcripts](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FUPJDE1).
 
-We use the [Python package textstat](https://pypi.org/project/textstat/) to estimate where each article lies on the Flesch Reading Ease scale, Flesch-Kincaid Grade Level Scale, The Fog Scale, and the SMOG scale, along with the number of words, and such.
+We use the [Python package py-readability-metrics](https://pypi.org/project/py-readability-metrics/) to estimate where each article lies on the Flesch Reading Ease scale, Flesch-Kincaid Grade Level Scale, The Fog Scale, and the SMOG scale, along with the number of words, and such. We also use the [Python package LexicalRichness](https://pypi.org/project/lexicalrichness/) to estimate lexical richness.
 
-### Data coverage
+### NYT is least readable
+
+Overall, we find NYT the most ~~highbrow~~ rarefied in taste out of the four news outlets. 
+NTY has the lowest readability score, with articles requiring higher language competency. On the other hand, NYT also has a higher usage of unique terms (possibly more jargon). 
+Even so, the readability of NYT articles has increased while the other three news outlets (CNN, NPR, MSNBC) have either remained mostly the same or decreased over time. Hence, the trend in NYT's readability suggests they feel the competition from alternative news sources, both traditional and untraditional. Our findings suggest NYT is threading the line to increase accessibility while maintaining its key demographic of college-educated Americans.
+
+### Data and coverage
 
 NYT article data is available for 1987&ndash;2007 (21 years):
 
 <p align="center"><img width="60%" src="figs/data_coverage/nyt_monthyear.png"></p>
 
-At a finer resolution, we can see that our data coverage is fattest on Sundays. Below is a plot for two full years of NYT data coverage:
+At a finer resolution, we can see that the Sunday newspaper has more articles than the weekday editions, and increasingly so. Below is a plot for two full years of NYT data coverage:
 
 <p align="center"><img width="60%" src="figs/data_coverage/nyt_dowmonth_1987.png"></p>
 
@@ -23,7 +29,7 @@ Before computing the text statistics (readability & lexical richness), we do som
 1. We use simple methods in computational linguistics to characterize NYT articles.
 While the average NYT article length has increased over time, so has readability and lexical richness. Uinsg alternative measures of readability and lexical richness lead to similar findings.
 
-    * Average NYT article length has increased over the years to 550 words in 2007 (an average reading time of 2–3 minutes):
+    * Average NYT article length has increased over the years to ~675 words in 2007 (an average reading time of 2–3 minutes):
       <details>
         <summary><em>Figure notes</em></summary>
         <em>Each marker is an average of NYT articles for each month-year. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
@@ -31,7 +37,7 @@ While the average NYT article length has increased over time, so has readability
 
     <p align="center"><img width="55%" src="figs/nyt_wordcount.png"></p>
 
-    * Average NYT article unique number of words used has also increased over time:
+    * Unique number of words per NYT article has also increased over time:
       <details>
         <summary><em>Figure notes</em></summary>
         <em>Each marker is an average of NYT articles for each month-year. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
@@ -39,7 +45,7 @@ While the average NYT article length has increased over time, so has readability
 
     <p align="center"><img width="55%" src="figs/nyt_uniquewords.png"></p>
     
-    * Comovement of wordcount and unique wordcount:
+    * Wordcount and unique words per NYT article moves together over time. Does this mean the lexical richness of NYT articles are steady over time as article length has increased? Our results on lexical richness below suggest a steady increase in lexical richness.
       <details>
         <summary><em>Figure notes</em></summary>
         <em>Each marker is an annual average of NYT articles. Both lines are indexed to 1987—the first year of our sample—so that each subsequent marker indicates annual percentage change since the base year of 1987.</em>
@@ -86,7 +92,8 @@ MTLD measures lexical richness using the mean length of sequential words in a te
       
     <p align="center"><img width="55%" src="figs/nyt_lexicalrichness_index.png"></p>
 
-NYT in comparison to CNN, NPR, and MSNBC:
+4. Using data for three other outlets (CNN 2001&ndash;2022, NPR 2005&ndash;2019, and MSNBC 2003&ndash;2021), we see that NYT is the least readable while being the most lexically rich. 
+For instance, NYT has an average of ~50 while CNN has an average of ~70 for the Flesch reading ease score. This 20-point difference is stark. A score of 50 is at the more readable tail of the US college level ((50&ndash;30)), which is the key NYT demographic. A score of ~70, on the other hand, is at the more readable tail of the 8th&ndash;9th grade in US school level reading level (70&ndash;60). In other words, the difference in readability between NYT and CNN is years of education.
 
 <p align="center">
   <img alt="Light" src="figs/readability_nyt_cnn_npr_msnbc.png" width="45%">
