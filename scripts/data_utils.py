@@ -1,7 +1,8 @@
 import re
 import sys
 from lexicalrichness import LexicalRichness
-
+from readability import Readability
+import numpy as np
 
 def clean_transcripts(text):
     """ This function applies minimal normalisation to transcript texts:
@@ -60,9 +61,42 @@ def clean_transcripts(text):
     return text.lower()
 
 
+def flesch(text):
+    r = Readability(text)
+    try:
+        return r.flesch().score
+    except:
+        return np.nan
+
+
+def fog(text):
+    r = Readability(text)
+    try:
+        return r.smog().score 
+    except:
+        return np.nan
+
+
+def smog(text):
+    r = Readability(text)
+    try:
+        return r.gunning_fog().score 
+    except:
+        return np.nan
+
+
+def terms(text):
+    r = Readability(text)
+    try:
+        return r.statistics()['num_words']
+    except:
+        return np.nan
+
+
 def uniqueterms(text):
     lex = LexicalRichness(text)
     return lex.terms
+
 
 def ttr(text):
     lex = LexicalRichness(text)
@@ -71,12 +105,14 @@ def ttr(text):
     else:
         return None
 
+
 def mtld(text):
     lex = LexicalRichness(text)
     if lex.words>1:
         return lex.mtld(threshold=0.72)
     else:
         return None
+
 
 def hdd(text):
     lex = LexicalRichness(text)
