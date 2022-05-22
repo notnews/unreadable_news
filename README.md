@@ -1,16 +1,16 @@
-# Readable News: Readability of News Over Time
+# Readable News: How Readable is American News?
 
-Has the news become more readable over time? We use the [NYT Corpus](https://github.com/notnews/nytimes-corpus-extractor) as our main data source to assess how the complexity of news articles has evolved over time. We supplement this data using (i) [CNN transcripts](https://github.com/notnews/cnn_transcripts), (ii) [NPR transcripts](https://github.com/zcgzcgzcg1/MediaSum/tree/main/data), and (iii) [MSNBC transcripts](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FUPJDE1).
+"[M]ore than half of Americans between the ages of 16 and 74 (54%) read below the equivalent of a sixth-grade level."
 
-We use the [Python package py-readability-metrics](https://pypi.org/project/py-readability-metrics/) to estimate where each article lies on the Flesch Reading Ease scale, Flesch-Kincaid Grade Level Scale, The Fog Scale, and the SMOG scale, along with the number of words, and such. We also use the [Python package LexicalRichness](https://pypi.org/project/lexicalrichness/) to estimate lexical richness.
+https://apmresearchlab.org/10x-adult-literacy
 
-### NYT is least readable
+Are these low levels of reading comprehension a barrier to becoming politically informed? To shed light on the concern, we estimate the readability of news produced by prominent outlets: [The New York Times](https://github.com/notnews/nytimes-corpus-extractor),  [CNN](https://github.com/notnews/cnn_transcripts), [NPR](https://github.com/zcgzcgzcg1/MediaSum/tree/main/data), and [MSNBC](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi%3A10.7910%2FDVN%2FUPJDE1).
 
-Overall, we find NYT the most ~~highbrow~~ rarefied in taste out of the four news outlets. 
-NTY has the lowest readability score, with articles requiring higher language competency. On the other hand, NYT also has a higher usage of unique terms (possibly more jargon). 
-Even so, the readability of NYT articles has increased while the other three news outlets (CNN, NPR, MSNBC) have either remained mostly the same or decreased over time. Hence, the trend in NYT's readability suggests they feel the competition from alternative news sources, both traditional and untraditional. Our findings suggest NYT is threading the line to increase accessibility while maintaining its key demographic of college-educated Americans.
+### NYT is the least readable
 
-### Data and coverage
+The NYT has the lowest readability score of the four outlets, with readers needing a high school education or more to read the average article. NYT also uses more unique terms. Even so, the readability of NYT articles has increased slightly while the other three news outlets (CNN, NPR, MSNBC) have either remained as readable or become slightly worse over time. The trend in NYT's readability suggests they feel competition from alternative news sources, both traditional and non-traditional. Our findings suggest NYT is striving to increase accessibility while maintaining its key demographic of college-educated Americans.
+
+### Data and Methods
 
 NYT article data is available for 1987&ndash;2007 (21 years):
 
@@ -22,17 +22,17 @@ At a finer resolution, we can see that the Sunday newspaper has more articles th
 
 <p align="center"><img width="60%" src="figs/data_coverage/nyt_dowmonth_2006.png"></p>
 
-Before computing the text statistics (readability & lexical richness), we do some basic text pre-processing. For the plots of readability and lexical richness, we also drop: (i) the 99th percentile in text length and (ii) the 1st percentile in text length or articles with fewer than 100 words, whichever is lower.
+Before computing readability and lexical richness scores, we drop articles over the 99th percentile in text length and below the 1st percentile in text length or articles with fewer than 100 words, whichever is lower. We use the [Python package py-readability-metrics](https://pypi.org/project/py-readability-metrics/) to estimate where each article lies on the Flesch Reading Ease scale, Flesch-Kincaid Grade Level Scale, The Fog Scale, and the SMOG scale, along with the number of words, and such. We also use the [Python package LexicalRichness](https://pypi.org/project/lexicalrichness/) to estimate lexical richness.
 
 
 ### What we find
-1. We use simple methods in computational linguistics to characterize NYT articles.
-While the average NYT article length has increased over time, so has readability and lexical richness. Uinsg alternative measures of readability and lexical richness lead to similar findings.
 
-    * Average NYT article length has increased over the years to ~675 words in 2007 (an average reading time of 2–3 minutes):
+1. While the average NYT article length has increased over time, so has the readability and the lexical richness. Using alternative measures of readability and lexical richness doesn't change the substantive results.
+
+    * The average length of an article has increased over the years from ~550 words to ~675 words (an average reading time of 2–3 minutes) in 2007:
       <details>
         <summary><em>Figure notes</em></summary>
-        <em>Each marker is an average of NYT articles for each month-year. Red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing bandwidth.</em>
+         <em>Each marker is an average of NYT articles for each month-year. The red line is a LOWESS (locally weighted scatterplot smoothing) with a generous smoothing          bandwidth.</em>
       </details>
 
     <p align="center"><img width="55%" src="figs/nyt_wordcount.png"></p>
