@@ -1,4 +1,4 @@
-# Readable News: How Readable is American News?
+# Unreadable News: How Readable is American News?
 
 "[M]ore than half of Americans between the ages of 16 and 74 (54%) read below the equivalent of a sixth-grade level."
 
