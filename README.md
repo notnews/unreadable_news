@@ -96,17 +96,17 @@ MTLD measures lexical richness using the mean length of sequential words in a te
 </p>
 
 
-5. We also split NYT articles into political vs apolitical (hard vs soft) news using hte news desk and online section. We find that NYT political news has far lower readability than NYT apolitical news. More than 50% of NYT political news require some college education. While not as obvious from the boxplot, more than 85% of NYT political news require US 12th grade. For NYT apolitical news, only about 30% require some college education.
+5. We also split NYT articles into political vs apolitical (hard vs soft) news using the news desks and online sections. We find that NYT political news has far lower readability than NYT apolitical news. More than 50% of NYT political news requires some college education. While not as obvious from the boxplot, more than 85% of NYT political news requires US 12th grade. For NYT apolitical news, only about 30% require some college education.
 
 <p align="center">
-  <img alt="Light" src="figs/nyt_boxplot_read.png" width="50%">
+  <img alt="Light" src="figs/nyt_boxplot_read.png" width="45%">
 &nbsp; &nbsp; &nbsp; &nbsp;
 </p>
 
-Lexical richness on the other hand does not display the level of difference in readability: 
+Lexical richness for NYT political vs apolitical news on the other hand does not display the same level of difference (as in readability): 
 
 <p align="center">
-  <img alt="Light" src="figs/nyt_boxplot_lex.png" width="50%">
+  <img alt="Light" src="figs/nyt_boxplot_lex.png" width="40%">
 &nbsp; &nbsp; &nbsp; &nbsp;
 </p>
 
