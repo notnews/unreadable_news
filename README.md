@@ -110,7 +110,7 @@ Lexical richness for NYT political vs apolitical news on the other hand does not
 &nbsp; &nbsp; &nbsp; &nbsp;
 </p>
 
-How unreadable is NYT news? One way to contextualize this is to note that even NYT's *soft news* still has lower readability than the median CNN, NPR, and MSNBC article: 
+How unreadable is NYT news? One way to contextualize this is to note that NYT's *soft news* has lower readability than the median CNN, NPR, and MSNBC article: 
 
 <p align="center">
   <img alt="Light" src="figs/boxplot_read_nyt_cnn_npr_msnbc.png" width="55%">
