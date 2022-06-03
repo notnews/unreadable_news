@@ -87,7 +87,7 @@ MTLD measures lexical richness using the mean length of sequential words in a te
       
     <p align="center"><img width="55%" src="figs/nyt_lexicalrichness_index.png"></p>
 
-4. Using data for three other outlets (CNN 2001&ndash;2022, NPR 2005&ndash;2019, and MSNBC 2003&ndash;2021), we see that NYT is the least readable while being the most lexically rich. For instance, NYT has an average of ~50 while CNN has an average of ~70 for the Flesch reading ease score. This 20-point difference is stark. A score of 50 is at the more readable tail of the US college level ((50&ndash;30)), which is the key NYT demographic. A score of ~70, on the other hand, is at the more readable tail of the 8th&ndash;9th grade in US school level reading level (70&ndash;60). In other words, the difference in readability between NYT and CNN is years of education.
+4. Using data for three other outlets (CNN 2001&ndash;2022, NPR 2005&ndash;2019, and MSNBC 2003&ndash;2021), we see that NYT is the least readable while being the most lexically rich. For instance, NYT has an average of ~50 while CNN has an average of ~70 for the Flesch reading ease score. This 20-point difference is stark. A score of 50 is at the more readable tail of the US college level (50&ndash;30), which is the key NYT demographic. A score of ~70, on the other hand, is at the more readable tail of the 8th&ndash;9th grade in US school level reading level (70&ndash;60). In other words, the difference in readability between NYT and CNN is years of education.
 
 <p align="center">
   <img alt="Light" src="figs/readability_nyt_cnn_npr_msnbc.png" width="45%">
@@ -95,3 +95,24 @@ MTLD measures lexical richness using the mean length of sequential words in a te
   <img alt="Dark" src="figs/lexicalrichness_nyt_cnn_npr_msnbc.png" width="45%">
 </p>
 
+
+5. We also split NYT articles into political vs apolitical (hard vs soft) news using hte news desk and online section. We find that NYT political news has far lower readability than NYT apolitical news. More than 50% of NYT political news require some college education. While not as obvious from the boxplot, more than 85% of NYT political news require US 12th grade. For NYT apolitical news, only about 30% require some college education.
+
+<p align="center">
+  <img alt="Light" src="figs/nyt_boxplot_read.png" width="50%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+</p>
+
+Lexical richness on the other hand does not display the level of difference in readability: 
+
+<p align="center">
+  <img alt="Light" src="figs/nyt_boxplot_lex.png" width="50%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+</p>
+
+How unreadable is NYT news? One way to contextualize this is to note that even NYT's *soft news* still has lower readability than the median CNN, NPR, and MSNBC article: 
+
+<p align="center">
+  <img alt="Light" src="figs/boxplot_read_nyt_cnn_npr_msnbc.png" width="50%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+</p>
