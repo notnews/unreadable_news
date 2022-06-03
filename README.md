@@ -106,13 +106,13 @@ MTLD measures lexical richness using the mean length of sequential words in a te
 Lexical richness for NYT political vs apolitical news on the other hand does not display the same level of difference (as in readability): 
 
 <p align="center">
-  <img alt="Light" src="figs/nyt_boxplot_lex.png" width="40%">
+  <img alt="Light" src="figs/nyt_boxplot_lex.png" width="35%">
 &nbsp; &nbsp; &nbsp; &nbsp;
 </p>
 
 How unreadable is NYT news? One way to contextualize this is to note that even NYT's *soft news* still has lower readability than the median CNN, NPR, and MSNBC article: 
 
 <p align="center">
-  <img alt="Light" src="figs/boxplot_read_nyt_cnn_npr_msnbc.png" width="50%">
+  <img alt="Light" src="figs/boxplot_read_nyt_cnn_npr_msnbc.png" width="55%">
 &nbsp; &nbsp; &nbsp; &nbsp;
 </p>
