@@ -1,0 +1,2 @@
+py-readability-metrics
+lexicalrichness
