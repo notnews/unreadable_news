@@ -12,7 +12,7 @@ The NYT has the lowest readability score of the four outlets, with readers needi
 
 ### Data and Methods
 
-NYT article data is available for 1987&ndash;2007 (21 years):
+NYT article data is available for 1987&ndash;2007 (21 years), N = 1.8 million:
 
 <p align="center"><img width="60%" src="figs/data_coverage/nyt_monthyear.png"></p>
 
